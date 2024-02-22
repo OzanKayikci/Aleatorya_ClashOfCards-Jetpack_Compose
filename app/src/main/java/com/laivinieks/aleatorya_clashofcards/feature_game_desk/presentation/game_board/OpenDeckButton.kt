@@ -1,9 +1,8 @@
-package com.laivinieks.aleatorya_clashofcards.feature_game_desk.presentation.components
+package com.laivinieks.aleatorya_clashofcards.feature_game_desk.presentation.game_board
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeightIn
 import androidx.compose.foundation.layout.requiredWidthIn
@@ -21,17 +20,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.laivinieks.aleatorya_clashofcards.R
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.Utils.m
-import com.laivinieks.aleatorya_clashofcards.ui.theme.cardBg
 
 @Composable
-fun OpenDeckButton(modifier: Modifier = Modifier, sm: Float = 0.4f) {
+fun OpenDeckButton(
+    modifier: Modifier = Modifier, sm: Float = 0.4f,
+    onclick: ((Boolean) -> Unit)? = null
+) {
     Box(
         modifier = modifier
             .requiredHeightIn(min = 60.dp)
             .padding(16.dp)
             .padding(start = 30.dp)
-            .clickable {  }
-        ,
+            .clickable {
+                if (onclick != null) {
+                    onclick(true)
+                }
+            },
 
 
         ) {
@@ -61,8 +65,8 @@ fun OpenDeckButton(modifier: Modifier = Modifier, sm: Float = 0.4f) {
 }
 
 
-@Preview(showSystemUi = true)
-@Composable
-private fun preview() {
-    OpenDeckButton()
-}
+//@Preview(showSystemUi = true)
+//@Composable
+//private fun preview() {
+//    OpenDeckButton()
+//}

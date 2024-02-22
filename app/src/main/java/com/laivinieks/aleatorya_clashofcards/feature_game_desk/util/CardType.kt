@@ -15,8 +15,8 @@ import com.laivinieks.aleatorya_clashofcards.R
 enum class CardType(name: String, icon: Int, description: String) {
 
     CloseRange(name = "Close Range", icon = R.drawable.two_sword_icon, description = ""),
-    Mage(name = "Mage", icon = R.drawable.two_sword_icon, description = ""),
-    Archer(name = "Archer", icon = R.drawable.two_sword_icon, description = ""),
+    Mage(name = "Mage", icon = R.drawable.wizard_icon, description = ""),
+    Archer(name = "Archer", icon = R.drawable.archer_icon, description = ""),
     Shield(name = "Shield", icon = R.drawable.two_sword_icon, description = ""),
     MageShield(name = "MageShield", icon = R.drawable.two_sword_icon, description = ""),
     Armor(name = "Armor", icon = R.drawable.two_sword_icon, description = ""),

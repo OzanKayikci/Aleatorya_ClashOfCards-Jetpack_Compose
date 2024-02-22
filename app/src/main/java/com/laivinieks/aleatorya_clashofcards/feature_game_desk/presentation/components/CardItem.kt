@@ -25,6 +25,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -44,18 +46,28 @@ import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.CardType
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.Utils.m
 
 @Composable
-fun CardItem(modifier: Modifier = Modifier, card: Card, sizeMultiplier: Float = 1f) {
+fun CardItem(modifier: Modifier = Modifier, card: Card, sizeMultiplier: Float = 1f, isClickable: Boolean = true) {
 
     val sm = sizeMultiplier
 
+    val cardColor = card.isSpecial.color.copy(
+        if (!card.isSpecial.isSpecial)
+            0.2f else 0.5f
+    )
+    val brush = Brush.radialGradient(listOf(cardColor, Color.Black.copy(alpha = 0.2f)), radius = (300.m(sm)))
     Box(
         modifier = modifier
             .size(80.m(sm).dp, 120.m(sm).dp)
             .requiredWidthIn(maxOf(80.m(sm)).dp)
             .clip(RoundedCornerShape(8.m(sm).dp))
-            .background(card.isSpecial.color.copy(0.2f))
-            .clickable {  }
-    ) {
+            .background(
+                brush
+            ).shadow(20.dp)
+            .clickable(enabled = isClickable) {
+
+            }
+    )
+    {
 
         Box(
             modifier = modifier

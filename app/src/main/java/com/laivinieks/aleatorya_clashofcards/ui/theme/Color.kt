@@ -11,4 +11,8 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 
-val cardBg = Color(0xFF6562B8)
+val normalCardColor= Color(0xFFE4E4E4)
+val strongAttackSpecialColor = Color(0xFFE48F39)
+val strongDefenceSpecialColor = Color(0xFF2EE489)
+val masterAttackSpecialColor = Color(0xFFE43D2E)
+val masterDeffenceSpecialColor = Color(0xFF4F2EE4)
