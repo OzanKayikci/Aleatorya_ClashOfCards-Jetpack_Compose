@@ -62,9 +62,13 @@ fun Aleatorya_ClashOfCardsTheme(
         }
     }
 
+    val customFonts = Typography.copy(
+        bodyMedium = MaterialTheme.typography.bodyMedium.copy(fontFamily = fonts)
+    )
+
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = customFonts,
         content = content
     )
 }

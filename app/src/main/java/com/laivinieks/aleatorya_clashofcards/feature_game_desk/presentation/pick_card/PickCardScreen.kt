@@ -17,6 +17,10 @@ import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,8 +37,10 @@ import coil.compose.rememberAsyncImagePainter
 import com.laivinieks.aleatorya_clashofcards.R
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.model.Card
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.presentation.components.CardItem
+import com.laivinieks.aleatorya_clashofcards.feature_game_desk.presentation.dice_roller.ChangeDetermineDialog
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.cards.FighterCards
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.GameBoardFeatureScreen
+import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.cards.DefenceCards
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.cards.MageCards
 import kotlin.math.absoluteValue
 
@@ -44,10 +50,17 @@ fun PickCardScreen(
     modifier: Modifier = Modifier,
     navHostController: NavHostController
 ) {
-    val cards = MageCards.SpecialStrongWizards + MageCards.SpecialMasterWizards
-
-
+    val cards = DefenceCards.weakDefenceCards + DefenceCards.midDefenceCards + DefenceCards.strongDefenceCards + DefenceCards.masterDefenceCards
     val pagerState = rememberPagerState(pageCount = { cards.size })
+
+    var showLuckDialog by remember {
+        mutableStateOf(true)
+    }
+    if (showLuckDialog) {
+        ChangeDetermineDialog(callback = { showDialog ->
+            showLuckDialog = showDialog
+        })
+    }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -59,9 +72,11 @@ fun PickCardScreen(
     ) {
 
         Box(modifier = Modifier.weight(1f))
-        CardPager(modifier = Modifier
-            .fillMaxHeight()
-            .weight(8f), cards = cards, pagerState = pagerState)
+        CardPager(
+            modifier = Modifier
+                .fillMaxHeight()
+                .weight(8f), cards = cards, pagerState = pagerState
+        )
 
         Box(
             modifier = Modifier
@@ -102,7 +117,7 @@ fun CardPager(modifier: Modifier = Modifier, cards: List<Card>, pagerState: Page
                         // translate the contents by the size of the page, to prevent the pages from sliding in from left or right and stays in the center
                         val scale = lerp(1f, 1.75f, pageOffset)
                         // apply an alpha to fade the current page in and the old page out
-                        alpha = 1 - pageOffset.absoluteValue*1.8f
+                        alpha = 1 - pageOffset.absoluteValue * 1.8f
                         scaleX = scale
                         scaleY = scale
                     }

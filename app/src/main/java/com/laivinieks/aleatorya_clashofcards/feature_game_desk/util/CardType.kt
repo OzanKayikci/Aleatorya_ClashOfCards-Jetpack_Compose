@@ -12,14 +12,22 @@ import androidx.compose.material.icons.rounded.Whatshot
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.laivinieks.aleatorya_clashofcards.R
 
-enum class CardType(name: String, icon: Int, description: String) {
+sealed class CardType(var cardName: String, var icon: Int, description: String, var abilityType: AbilityType? = null) {
 
-    CloseRange(name = "Close Range", icon = R.drawable.two_sword_icon, description = ""),
-    Mage(name = "Mage", icon = R.drawable.wizard_icon, description = ""),
-    Archer(name = "Archer", icon = R.drawable.archer_icon, description = ""),
-    Shield(name = "Shield", icon = R.drawable.two_sword_icon, description = ""),
-    MageShield(name = "MageShield", icon = R.drawable.two_sword_icon, description = ""),
-    Armor(name = "Armor", icon = R.drawable.two_sword_icon, description = ""),
-    Special(name = "Special", icon = R.drawable.two_sword_icon, description = ""),
+    object CloseRange : CardType(cardName = "Close Range", icon = R.drawable.two_sword_icon, description = "")
+    object Mage : CardType(cardName = "Mage", icon = R.drawable.wizard_icon, description = "")
+    object Archer : CardType(cardName = "Archer", icon = R.drawable.archer_icon, description = "")
+    object Shield : CardType(cardName = "Shield", icon = R.drawable.defence_shield_icon, description = "")
+    object SpellShield : CardType(cardName = "SpellShield", icon = R.drawable.defence_magic_icon, description = "")
+    object Helmet : CardType(cardName = "Armor", icon = R.drawable.defence_helmet_icon, description = "")
+    class Ability(abilityType: AbilityType) :
+        CardType(cardName = "Ability", icon = R.drawable.ability_icon, description = "", abilityType = abilityType)
 
+}
+
+enum class AbilityType(var power: Int) {
+    BLOCK_DEFENCE(0),
+    BLOCK_WARRIOR(0),
+    BLOCK_ARCHER(10),
+    BLOCK_WIZARD(20)
 }

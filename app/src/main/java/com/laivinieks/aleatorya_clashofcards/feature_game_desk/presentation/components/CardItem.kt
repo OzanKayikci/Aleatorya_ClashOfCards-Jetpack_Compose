@@ -129,7 +129,7 @@ fun CardItem(modifier: Modifier = Modifier, card: Card, sizeMultiplier: Float = 
 
                 }
                 Image(
-                    painter = painterResource(id = R.drawable.two_sword_icon), contentDescription = "card style",
+                    painter = painterResource(id = card.type.icon), contentDescription = "card style",
                     modifier = Modifier.size(18.m(sm).dp)
                 )
             }
