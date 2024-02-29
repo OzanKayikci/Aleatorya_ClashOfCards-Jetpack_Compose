@@ -1,10 +1,10 @@
-package com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.cards
+package com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.util.cards
 
 import com.laivinieks.aleatorya_clashofcards.R
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.model.Card
-import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.AbilityType
-import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.CardSpecialityType
-import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.CardType
+import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.util.AbilityType
+import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.util.CardSpecialityType
+import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.util.CardType
 
 object AbilityCards {
     private val ivyWallAbility = Card(

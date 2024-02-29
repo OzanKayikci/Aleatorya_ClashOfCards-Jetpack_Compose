@@ -19,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.laivinieks.aleatorya_clashofcards.R
+import com.laivinieks.aleatorya_clashofcards.feature_game_desk.presentation.components.bounceClick
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.Utils.m
 
 @Composable
@@ -31,14 +32,14 @@ fun OpenDeckButton(
             .requiredHeightIn(min = 60.dp)
             .padding(16.dp)
             .padding(start = 30.dp)
-            .clickable {
+            .bounceClick(onAnimationFinished  = {
                 if (onclick != null) {
                     onclick(true)
                 }
-            },
+            })
 
 
-        ) {
+    ) {
         for (index in 0..5) {
 
             val rotateVal = (-25 + (10 * index)).toFloat()

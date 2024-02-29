@@ -19,7 +19,6 @@ import kotlinx.coroutines.delay
 @Composable
 fun DiceRoller(modifier: Modifier = Modifier, items: List<Int>, isRolling: Boolean = false, selected: (Int) -> Unit) {
     var rolling by remember { mutableStateOf(isRolling) }
-    Log.d("isr", isRolling.toString())
     LaunchedEffect(isRolling) {
         rolling = isRolling // isRolling değeri değiştiğinde rolling'e atama yapılıyor
         if (rolling) {

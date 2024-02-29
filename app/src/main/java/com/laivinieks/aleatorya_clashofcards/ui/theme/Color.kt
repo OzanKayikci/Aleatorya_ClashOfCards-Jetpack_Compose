@@ -15,6 +15,6 @@ val normalCardColor= Color(0xFFE4E4E4)
 val strongAttackSpecialColor = Color(0xFFE48F39)
 val strongDefenceSpecialColor = Color(0xFF2EE489)
 val masterAttackSpecialColor = Color(0xFFE43D2E)
-val masterDeffenceSpecialColor = Color(0xFF4F2EE4)
+val masterDefenceSpecialColor = Color(0xFF4F2EE4)
 
 val diceTextColor = Color(0xFF801107)

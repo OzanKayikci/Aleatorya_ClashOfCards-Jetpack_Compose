@@ -1,9 +1,9 @@
-package com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.cards
+package com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.util.cards
 
 import com.laivinieks.aleatorya_clashofcards.R
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.model.Card
-import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.CardSpecialityType
-import com.laivinieks.aleatorya_clashofcards.feature_game_desk.util.CardType
+import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.util.CardSpecialityType
+import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.util.CardType
 
 object MageCards {
     private val natureWizard = Card(
@@ -12,7 +12,7 @@ object MageCards {
         power = 30,
         defence = 0,
         type = CardType.Mage,
-        title = "",
+        title = "Nature Wizard",
         desc = "",
         isSpecial = CardSpecialityType.NotSpecial
     )
@@ -140,43 +140,43 @@ object MageCards {
     )
 
     private val spaceWizardSpecial = Card(
-        id = 308,
+        id = 313,
         imageUrl = R.drawable.space_wizard,
         power = 110,
         defence = 0,
         type = CardType.Mage,
-        title = "Space Wizard",
+        title = "Special Space Wizard",
         desc = "",
         isSpecial = CardSpecialityType.StrongAttackSpecial
     )
 
     private val viseSorcererSpecial = Card(
-        id = 310,
+        id = 314,
         imageUrl = R.drawable.vise_sorcerer,
         power = 110,
         defence = 0,
         type = CardType.Mage,
-        title = "Vise Sorcerer",
+        title = "Special Vise Sorcerer",
         desc = "",
         isSpecial = CardSpecialityType.StrongAttackSpecial
     )
     private val unknownSorcererSpecial = Card(
-        id = 311,
+        id = 315,
         imageUrl = R.drawable.powerful_unknown_sorcerer,
         power = 100,
         defence = 30,
         type = CardType.Mage,
-        title = "Powerful Unknown Sorcerer",
+        title = "Special Powerful Unknown Sorcerer",
         desc = "",
         isSpecial = CardSpecialityType.MasterDefenceSpecial
     )
     private val motherOfMagesSpecial = Card(
-        id = 312,
+        id = 316,
         imageUrl = R.drawable.mother_of_sorcerers,
         power = 110,
         defence = 20,
         type = CardType.Mage,
-        title = "Mother Of Sorcerers",
+        title = "Special Mother Of Sorcerers",
         desc = "",
         isSpecial = CardSpecialityType.MasterAttackSpecial
     )

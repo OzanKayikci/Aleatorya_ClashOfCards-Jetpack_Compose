@@ -1,15 +1,5 @@
-package com.laivinieks.aleatorya_clashofcards.feature_game_desk.util
+package com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.util
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AddCircle
-import androidx.compose.material.icons.rounded.ArrowDownward
-import androidx.compose.material.icons.rounded.Circle
-import androidx.compose.material.icons.rounded.DoubleArrow
-import androidx.compose.material.icons.rounded.Shield
-import androidx.compose.material.icons.rounded.ShieldMoon
-import androidx.compose.material.icons.rounded.SpeakerGroup
-import androidx.compose.material.icons.rounded.Whatshot
-import androidx.compose.ui.graphics.vector.ImageVector
 import com.laivinieks.aleatorya_clashofcards.R
 
 sealed class CardType(var cardName: String, var icon: Int, description: String, var abilityType: AbilityType? = null) {

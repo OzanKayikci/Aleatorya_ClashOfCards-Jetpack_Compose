@@ -1,10 +1,9 @@
-package com.laivinieks.aleatorya_clashofcards.feature_game_desk.presentation.pick_card
+package com.laivinieks.aleatorya_clashofcards.feature_game_desk.presentation.pick_card.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -20,14 +19,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.model.Card
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.presentation.components.CardItem
+import com.laivinieks.aleatorya_clashofcards.feature_game_desk.presentation.components.bounceClick
 
 @Composable
 fun MiniCardDeck(
     modifier: Modifier = Modifier,
     cards: List<Card>,
     currentCardIndex: Int = 0,
-    onClick: (Boolean) -> Unit
+    changeCurrentCard: (Int) -> Unit,
 ) {
+
 
     Box(
         modifier = modifier
@@ -51,9 +52,9 @@ fun MiniCardDeck(
                         modifier
                             .rotate(rotateVal)
                             .padding(horizontal = (5 * index).dp)
-                            .offset(y = (-20).dp)
-                            .clip(RoundedCornerShape(3.dp))
-                            .background(Color.Cyan.copy(0.5f))
+                            .offset(y = (-30).dp)
+                        //    .clip(RoundedCornerShape(5.dp))
+                          //  .background(Color.Cyan.copy(0.5f))
                     } else {
                         modifier
                             .rotate(rotateVal)
@@ -63,6 +64,10 @@ fun MiniCardDeck(
 
                 ) {
                     CardItem(
+                        modifier = Modifier.bounceClick (onAnimationFinished ={
+                            changeCurrentCard(index)
+
+                        }),
                         card = card, isClickable = false, sizeMultiplier = if (currentCardIndex == index) 0.9f else 0.80f
                     )
 
@@ -70,12 +75,12 @@ fun MiniCardDeck(
             }
 
         }
-        Box(modifier = modifier
-            .width(150.dp)
-            .height(120.dp)
-            .clickable {
-                onClick(true)
-            }) {}
+        Box(
+            modifier = modifier
+                .width(150.dp)
+                .height(120.dp)
+
+        )
 
     }
 }

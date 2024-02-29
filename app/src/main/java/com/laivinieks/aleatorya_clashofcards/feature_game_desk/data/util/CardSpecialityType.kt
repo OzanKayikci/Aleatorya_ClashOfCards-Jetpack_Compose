@@ -1,4 +1,4 @@
-package com.laivinieks.aleatorya_clashofcards.feature_game_desk.util
+package com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.util
 
 import androidx.compose.ui.graphics.Color
 import com.laivinieks.aleatorya_clashofcards.ui.theme.*
@@ -39,7 +39,7 @@ sealed class CardSpecialityType(
         isSpecial = true,
         isMaster = true,
         isAttackSpecial = false,
-        color = masterDeffenceSpecialColor
+        color = masterDefenceSpecialColor
     )
 
 }
