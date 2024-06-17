@@ -20,7 +20,6 @@ fun FeatureGameDeskNavHost(
 ) {
 
     val navController = rememberNavController()
-
     val gameDeskViewModel: GameDeskViewModel = viewModel()
     NavHost(
         navController = navController,

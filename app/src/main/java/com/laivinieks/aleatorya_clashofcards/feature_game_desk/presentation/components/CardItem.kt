@@ -40,6 +40,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.laivinieks.aleatorya_clashofcards.R
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.model.Card
 import com.laivinieks.aleatorya_clashofcards.feature_game_desk.data.util.cards.Cards
@@ -54,6 +56,7 @@ fun CardItem(
     card: Card,
     sizeMultiplier: Float = 1f,
     isClickable: Boolean = true,
+    clickedForPreview: (Card) -> Unit = {}
 ) {
 
     var configuration = LocalConfiguration.current
@@ -77,8 +80,8 @@ fun CardItem(
 //            )
 //            .shadow(20.dp)
             .padding(top = 2.dp)
-            .clickable(enabled = isClickable) {
-
+            .bounceClick(isEnabled = isClickable) {
+                clickedForPreview(card)
             },
         contentAlignment = Alignment.Center
     )
@@ -105,12 +108,22 @@ fun CardItem(
                 .size(80.m(sm).dp, 120.m(sm).dp)
 
                 .clip(RoundedCornerShape(6.m(sm).dp))
-                .paint(
-                    painterResource(id = if (!card.isCardClose) card.imageUrl else R.drawable.card_bg),
-                    contentScale = ContentScale.FillHeight
-                )
+
+
 
         ) {
+
+            AsyncImage(
+                modifier = Modifier.size(80.m(sm).dp, 120.m(sm).dp).clip(RoundedCornerShape(6.m(sm).dp)),
+
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(if (!card.isCardClose) card.imageUrl else R.drawable.card_bg)
+                    .crossfade(true)
+                    .build(),
+
+                contentDescription = card.title,
+                contentScale = ContentScale.Crop,
+            )
 
             Column(
                 modifier = Modifier
@@ -185,6 +198,7 @@ fun Preview() {
         CardItem(
             sizeMultiplier = 3f,
             card = card,
+            clickedForPreview = {}
         )
     }
 }

@@ -42,7 +42,7 @@ object AbilityCards {
         imageUrl = R.drawable.rain_ability,
         power = 0,
         defence = 0,
-        type = CardType.Ability(AbilityType.BLOCK_WIZARD),
+        type = CardType.Ability(AbilityType.BLOCK_ARCHER),
         title = "Rain",
         desc = "",
         isSpecial = CardSpecialityType.NotSpecial

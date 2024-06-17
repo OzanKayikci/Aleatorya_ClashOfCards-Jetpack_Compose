@@ -57,6 +57,19 @@ class GameDeskViewModel : ViewModel() {
     private val _showTurnText = mutableStateOf(false)
     val showTurnText: MutableState<Boolean> = _showTurnText
 
+
+    init {
+        val playerCards =
+            Cards.strongCards.shuffled().filter { it.type::class != CardType.Archer::class }.take(2) + Cards.masterSpecialCards.shuffled()
+                .filter { it.type::class != CardType.Archer::class }.take(4) + Cards.midCards.shuffled()
+                .filter { it.type::class != CardType.Archer::class }.take(2)
+        val aiCards = Cards.strongCards.shuffled().take(2) + Cards.masterSpecialCards.shuffled().take(4) + Cards.midCards.shuffled().take(2)
+
+        _playerCards.value = playerCards
+        _AICards.value = aiCards
+
+    }
+
     fun onEvent(event: GameBoardEvent) {
         when (event) {
             is GameBoardEvent.ChangeAIStats -> {
@@ -144,6 +157,8 @@ class GameDeskViewModel : ViewModel() {
     }
 
     fun playAI() {
+        _newCard.value = null
+
         var newAICard = AILogic().invoke(playerCards.value)
         newAICard = if (newAICard.type::class == CardType.Ability::class) newAICard.copy(isCardClose = true) else newAICard
         var cards = AICards.value.toMutableList()
@@ -151,7 +166,7 @@ class GameDeskViewModel : ViewModel() {
         _AICards.value = cards
 
         _AIStats.value = AIStats.value.copy(
-            attack =  AIStats.value.attack + newAICard.power,
+            attack = AIStats.value.attack + newAICard.power,
             defence = AIStats.value.defence + newAICard.defence
         )
     }
